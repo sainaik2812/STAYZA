@@ -43,6 +43,54 @@
     display: flex;
     align-items: center;
   }
+
+  @media (max-width: 768px) {
+    #filters {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 1rem;
+      padding-bottom: 0.5rem;
+      margin-right: 0;
+      margin-left: 0;
+    }
+
+    .filter {
+      margin-right: 0.5rem;
+      margin-top: 1rem;
+      min-width: 60px;
+      font-size: 0.9rem;
+    }
+
+    .filter i {
+      font-size: 1.1rem;
+    }
+
+    .tax-toggle {
+      width: 100%;
+      justify-content: center;
+      font-size: 0.95rem;
+      height: auto;
+      padding: 0.5rem;
+      margin-left: 0; /* Added: remove left margin on mobile */
+      white-space: nowrap;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .filter {
+      min-width: 50px;
+      font-size: 0.8rem;
+    }
+    .filter i {
+      font-size: 1rem;
+    }
+    .tax-toggle {
+      font-size: 0.9rem;
+      padding: 0.50rem;
+      margin-left: 0; /* Added: remove left margin on small screens */
+      white-space: nowrap;
+    }
+  }
 </style>
 
 <div id="filters">
@@ -56,7 +104,7 @@
   </a>
   <a href="/listings/filter/3" class="filter">
     <div><i class="fa-solid fa-mountain-city"></i></div>
-    <p>Iconic Cities</p>
+    <p>Cities</p>
   </a>
   <a href="/listings/filter/4" class="filter">
     <div><i class="fa-solid fa-mountain"></i></div>
@@ -68,7 +116,7 @@
   </a>
   <a href="/listings/filter/6" class="filter">
     <div><i class="fa-solid fa-person-swimming"></i></div>
-    <p>Amazing Pools</p>
+    <p>Pools</p>
   </a>
   <a href="/listings/filter/7" class="filter">
     <div><i class="fa-solid fa-campground"></i></div>

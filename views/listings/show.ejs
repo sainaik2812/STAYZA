@@ -4,6 +4,150 @@
   const listing = JSON.parse('<%- JSON.stringify(listing) %>');
 </script>
 
+<style>
+  #map {
+    width: 100%;
+    height: 350px;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+  }
+  .show-card {
+    margin-bottom: 1.5rem;
+  }
+  .show-img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 1rem 1rem 0 0;
+  }
+  @media (max-width: 992px) {
+    .col-8.offset-3,
+    .col-8.offset-3.mb-3,
+    .col-6.offset-3 {
+      width: 100% !important;
+      margin-left: 0 !important;
+      padding: 0 1rem;
+    }
+    .show-card {
+      margin: 0 auto 1.5rem auto;
+      float: none;
+    }
+  }
+  @media (max-width: 768px) {
+    #map {
+      height: 200px;
+      border-radius: 0.75rem;
+    }
+    .show-img {
+      max-height: 180px;
+      border-radius: 0.75rem 0.75rem 0 0;
+    }
+    .col-8.offset-3,
+    .col-8.offset-3.mb-3,
+    .col-6.offset-3 {
+      width: 100% !important;
+      margin-left: 0 !important;
+      padding: 0 0.5rem;
+    }
+    .show-card {
+      margin: 0 auto 1rem auto;
+    }
+    .row.mt-3 {
+      margin-top: 1rem !important;
+    }
+    .card.col-5.ms-3.mb-3 {
+      width: 100% !important;
+      margin-left: 0 !important;
+    }
+    .btns .btn, .btns button {
+      font-size: 1rem;
+      padding: 0.6rem 0.9rem;
+      min-width: 90px;
+    }
+    .btns {
+      gap: 0.5rem;
+    }
+  }
+  @media (max-width: 480px) {
+    #map {
+      height: 200px;
+      border-radius: 0.5rem;
+    }
+    .show-img {
+      max-height: 180px;
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
+    .col-8.offset-3,
+    .col-8.offset-3.mb-3,
+    .col-6.offset-3 {
+      width: 100% !important;
+      margin-left: 0 !important;
+      padding: 0 0.25rem;
+    }
+    .show-card {
+      margin: 0 auto 0.75rem auto;
+    }
+    .row.mt-3 {
+      margin-top: 0.5rem !important;
+    }
+    .card.col-5.ms-3.mb-3 {
+      width: 100% !important;
+      margin-left: 0 !important;
+    }
+    h3, h4 {
+      font-size: 1.1rem;
+    }
+    .btn, .btn-outline-dark {
+      font-size: 0.95rem;
+      padding: 0.375rem 0.75rem;
+    }
+    .btns .btn, .btns button {
+      font-size: 0.98rem;
+      padding: 0.5rem 0.7rem;
+      min-width: 80px;
+    }
+    .btns {
+      gap: 0.4rem;
+    }
+  }
+  .btns {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 0; /* Ensure left alignment */
+}
+
+.btns .btn, .btns button {
+  min-width: 90px;
+  font-size: 1rem;
+  padding: 0.6rem 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .btns .btn, .btns button {
+    font-size: 1rem;
+    padding: 0.6rem 0.9rem;
+    min-width: 90px;
+  }
+  .btns {
+    gap: 0.5rem;
+  }
+}
+@media (max-width: 480px) {
+  .btns .btn, .btns button {
+    font-size: 0.98rem;
+    padding: 0.5rem 0.7rem;
+    min-width: 80px;
+  }
+  .btns {
+    gap: 0.4rem;
+  }
+}
+</style>
+
 <div class="row mt-3">
   <div class="col-8 offset-3">
     <h3><%= listing.title %></h3>
@@ -28,16 +172,16 @@
   <br />
 
   <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
-  <div class="btns">
-    <a
-      href="/listings/<%= listing._id %>/edit"
-      class="btn btn-dark col-1 offset-3 edit-btn"
-      >Edit</a
-    >
-
-    <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
-      <button class="btn btn-dark offset-5">Delete</button>
-    </form>
+  <div class="col-8 offset-3">
+    <div class="btns">
+      <a
+        href="/listings/<%= listing._id %>/edit"
+        class="btn btn-dark edit-btn"
+      >Edit</a>
+      <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
+        <button class="btn btn-dark">Delete</button>
+      </form>
+    </div>
   </div>
   <% } %>
 

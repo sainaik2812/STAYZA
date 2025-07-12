@@ -126,3 +126,8 @@ body {
     width: 100vh;
     height: 400px;
 }
+
+.navbar-nav{
+background-color: rgba(255, 255, 255, 0.928);
+font-size: 1.1rem;
+}
